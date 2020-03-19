@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debug 1`] = `
+"<React.Fragment>
+  <button
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Press me 0\\"
+  />
+  <TextComponent
+    text=\\"Press me 0\\"
+  />
+</React.Fragment>"
+`;
+
+exports[`debug.deep 1`] = `
+"Array [
+  <button
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Press me 0\\"
+  />,
+  <text>
+    Press me 0
+  </text>,
+]"
+`;
+
+exports[`debug.deep async test 1`] = `
+"Array [
+  <button
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Press me 1\\"
+  />,
+  <text>
+    Press me 1
+  </text>,
+]"
+`;

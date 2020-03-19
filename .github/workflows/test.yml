@@ -1,0 +1,30 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install ubuntu deps
+        run: sudo apt install mesa-common-dev libglu1-mesa-dev
+
+      - name: Install npm dependencies
+        run: yarn install
+
+      - name: Run build
+        run: yarn build
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Run eslint
+        run: yarn lint

@@ -1,0 +1,27 @@
+{
+  "projectName": "react-nodegui-testing-library",
+  "projectOwner": "fnky",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "fnky",
+      "name": "Christian Petersen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/995050?v=4",
+      "profile": "https://cbp.io",
+      "contributions": [
+        "code",
+        "doc",
+        "infra",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

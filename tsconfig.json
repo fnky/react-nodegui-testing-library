@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "checkJs": false,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "jsx": "react",
+    "outDir": "build",
+    "declaration": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src/**/*"],
+  "typedocOptions": {
+    "mode": "file",
+    "out": "website/docs/api/generated",
+    "plugin": ["typedoc-plugin-markdown"],
+    "excludeExternals": true,
+    "excludeNotExported": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "includeDeclarations": true,
+    "hideBreadcrumbs": true,
+    "hideSources": true,
+    "theme": "docusaurus2"
+  }
+}

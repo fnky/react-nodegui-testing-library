@@ -1,0 +1,84 @@
+{
+  "name": "react-nodegui-testing-library",
+  "version": "0.0.0-development",
+  "description": "Simple React NodeGui testing utilities that encourage good testing practices.",
+  "main": "build/index.js",
+  "typings": "build/index.d.ts",
+  "author": "Christian Petersen <chrs@cbp.io>",
+  "license": "MIT",
+  "repository": "git@github.com:fnky/react-nodegui-testing-library.git",
+  "private": false,
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "prepublishOnly": "yarn typecheck && yarn lint && yarn build && yarn test",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint --cache src/**/*.{ts,tsx}",
+    "build": "tsc -p tsconfig.build.json",
+    "test": "jest",
+    "test:update": "yarn test --updateSnapshot --coverage",
+    "docs": "cross-env typedoc && node ./website/docs/scripts/fixdocs.js",
+    "semantic-release": "semantic-release"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn typecheck && yarn build && yarn test && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --write",
+      "yarn lint --fix"
+    ]
+  },
+  "keywords": [
+    "testing-library",
+    "testing",
+    "nodegui",
+    "react",
+    "react-nodegui"
+  ],
+  "dependencies": {
+    "pretty-format": "^25.1.0"
+  },
+  "devDependencies": {
+    "@nodegui/nodegui": "^0.15.2",
+    "@nodegui/react-nodegui": "^0.5.0",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.2",
+    "@types/react": "^16.9.23",
+    "@types/react-test-renderer": "^16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.1",
+    "react": "^16.13.0",
+    "react-test-renderer": "^16.13.0",
+    "strip-ansi": "^6.0.0",
+    "ts-jest": "^25.2.1",
+    "typedoc": "^0.17.1",
+    "typedoc-plugin-markdown": "^2.2.17",
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.4"
+  },
+  "peerDependencies": {
+    "@nodegui/react-nodegui": ">=0.5.0",
+    "react": "^16.9.0",
+    "react-test-renderer": "^16.13.0"
+  },
+  "greenkeeper": {
+    "ignore": [
+      "react",
+      "react-test-renderer"
+    ]
+  }
+}

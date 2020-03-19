@@ -1,0 +1,236 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debug 1`] = `
+"<view>
+  <text>
+    Is the banana fresh?
+  </text>
+  <text
+    testID=\\"bananaFresh\\"
+  >
+    not fresh
+  </text>
+  <linedit
+    placeholderText=\\"Add custom freshness\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"Custom Freshie\\"
+  />
+  <linedit
+    placeholderText=\\"Who inspected freshness?\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"I inspected freshie\\"
+  />
+  <button
+    id=\\"primary\\"
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Change freshness!\\"
+  />
+  <text
+    testID=\\"duplicateText\\"
+  >
+    First Text
+  </text>
+  <text
+    testID=\\"duplicateText\\"
+  >
+    Second Text
+  </text>
+  <text>
+    0
+  </text>
+</view>"
+`;
+
+exports[`debug changing component: bananaFresh button message should now be "fresh" 1`] = `
+"<view>
+  <text>
+    Is the banana fresh?
+  </text>
+  <text
+    testID=\\"bananaFresh\\"
+  >
+    fresh
+  </text>
+  <linedit
+    placeholderText=\\"Add custom freshness\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"Custom Freshie\\"
+  />
+  <linedit
+    placeholderText=\\"Who inspected freshness?\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"I inspected freshie\\"
+  />
+  <button
+    id=\\"primary\\"
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Change freshness!\\"
+  />
+  <text
+    testID=\\"duplicateText\\"
+  >
+    First Text
+  </text>
+  <text
+    testID=\\"duplicateText\\"
+  >
+    Second Text
+  </text>
+  <text>
+    0
+  </text>
+</view>"
+`;
+
+exports[`debug: shallow 1`] = `
+"<view>
+  <text>
+    Is the banana fresh?
+  </text>
+  <text
+    testID=\\"bananaFresh\\"
+  >
+    not fresh
+  </text>
+  <linedit
+    placeholderText=\\"Add custom freshness\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"Custom Freshie\\"
+  />
+  <linedit
+    placeholderText=\\"Who inspected freshness?\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"I inspected freshie\\"
+  />
+  <button
+    id=\\"primary\\"
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Change freshness!\\"
+  />
+  <text
+    testID=\\"duplicateText\\"
+  >
+    First Text
+  </text>
+  <text
+    testID=\\"duplicateText\\"
+  >
+    Second Text
+  </text>
+  <text>
+    0
+  </text>
+</view>"
+`;
+
+exports[`debug: shallow with message 1`] = `
+"my other custom message
+
+<view>
+  <text>
+    Is the banana fresh?
+  </text>
+  <text
+    testID=\\"bananaFresh\\"
+  >
+    not fresh
+  </text>
+  <linedit
+    placeholderText=\\"Add custom freshness\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"Custom Freshie\\"
+  />
+  <linedit
+    placeholderText=\\"Who inspected freshness?\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"I inspected freshie\\"
+  />
+  <button
+    id=\\"primary\\"
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Change freshness!\\"
+  />
+  <text
+    testID=\\"duplicateText\\"
+  >
+    First Text
+  </text>
+  <text
+    testID=\\"duplicateText\\"
+  >
+    Second Text
+  </text>
+  <text>
+    0
+  </text>
+</view>"
+`;
+
+exports[`debug: with message 1`] = `
+"my custom message
+
+<view>
+  <text>
+    Is the banana fresh?
+  </text>
+  <text
+    testID=\\"bananaFresh\\"
+  >
+    not fresh
+  </text>
+  <linedit
+    placeholderText=\\"Add custom freshness\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"Custom Freshie\\"
+  />
+  <linedit
+    placeholderText=\\"Who inspected freshness?\\"
+    testID=\\"bananaCustomFreshness\\"
+    text=\\"I inspected freshie\\"
+  />
+  <button
+    id=\\"primary\\"
+    on={
+      Object {
+        \\"clicked\\": [Function anonymous],
+      }
+    }
+    text=\\"Change freshness!\\"
+  />
+  <text
+    testID=\\"duplicateText\\"
+  >
+    First Text
+  </text>
+  <text
+    testID=\\"duplicateText\\"
+  >
+    Second Text
+  </text>
+  <text>
+    0
+  </text>
+</view>"
+`;
+
+exports[`toJSON will return json representation of the element 1`] = `
+<text>
+  read me
+</text>
+`;
