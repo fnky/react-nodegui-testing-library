@@ -1,10 +1,21 @@
+.idea
+.DS_STORE
+.eslintcache
+*.swp
+*~
+.DS_Store
+
 node_modules
 coverage
 build
-.DS_Store
 
 *.log
-.vscode
+npm-debug.log*
+yarn-error.log*
 
 package-lock.json
-yarn.lock
+
+/website/yarn.lock
+
+coverage
+

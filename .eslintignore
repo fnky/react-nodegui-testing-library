@@ -1,4 +1,8 @@
+coverage
 node_modules
 build
+website/blog
+website/build
+website/node_modules
 website/docs/api/generated
 website/docs/api/sidebar-gen.js
