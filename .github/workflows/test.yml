@@ -1,13 +1,38 @@
 name: Tests
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
-  test:
+  cleanup-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rokroskar/workflow-run-cleanup-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    if: "!startsWith(github.ref, 'refs/tags/') && github.ref != 'refs/heads/master'"
+
+  lint-and-typecheck:
+    name: Running TypeScript compiler & ESLint
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v2
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ubuntu-latest-node-12.x-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ubuntu-latest-node-12.x-yarn-
 
       - name: Set Node.js version
         uses: actions/setup-node@v1
@@ -17,14 +42,48 @@ jobs:
       - name: Install ubuntu deps
         run: sudo apt install mesa-common-dev libglu1-mesa-dev
 
-      - name: Install npm dependencies
-        run: yarn install
+      - name: Install dependencies
+        run: yarn --no-progress --frozen-lockfile
 
       - name: Run build
         run: yarn build
 
-      - name: Run tests
-        run: yarn test
-
       - name: Run eslint
         run: yarn lint
+
+  test:
+    name: Node v${{ matrix.node-version }} on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [12.x, 13.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install ubuntu deps
+        if: contains(matrix.os, 'ubuntu')
+        run: sudo apt install mesa-common-dev libglu1-mesa-dev
+
+      - name: Install dependencies
+        run: yarn --no-progress --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
