@@ -1,9 +1,12 @@
-name: Release
+name: Node CI
 
 on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   cleanup-runs:
@@ -15,7 +18,53 @@ jobs:
     if: "!startsWith(github.ref, 'refs/tags/') && github.ref !=
     'refs/heads/master'"
 
+  build:
+    name: Node v${{ matrix.node-version }} on ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [12.x, 13.x]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-yarn-
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install ubuntu deps
+        if: contains(matrix.os, 'ubuntu')
+        run: sudo apt install mesa-common-dev libglu1-mesa-dev
+
+      - name: Install dependencies
+        run: yarn --no-progress --frozen-lockfile
+        env:
+          CI: true
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run tests
+        run: yarn test
+
+      - name: Run build
+        run: yarn build
+
   publish-npm:
+    needs: build
     name: Publish to npm
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
@@ -46,9 +95,6 @@ jobs:
         run: yarn --no-progress --frozen-lockfile
         env:
           CI: true
-
-      - name: Build
-        run: yarn build
 
       - name: Auto publish to NPM
         uses: luvies/action-yarn-publish@v0.1.1
