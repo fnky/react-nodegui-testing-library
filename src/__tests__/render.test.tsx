@@ -86,6 +86,7 @@ test('getAllByTestId, queryAllByTestId', () => {
     'No instances found',
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const queriedTextElements = queryAllByTestId('duplicateText')!;
 
   expect(queriedTextElements.length).toBe(2);

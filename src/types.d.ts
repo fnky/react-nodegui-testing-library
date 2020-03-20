@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as config from '@nodegui/react-nodegui/dist/components/config';
 
 declare module '@nodegui/react-nodegui/dist/components/config' {
