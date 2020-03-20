@@ -1,6 +1,6 @@
 {
   "name": "react-nodegui-testing-library",
-  "version": "0.0.0-development",
+  "version": "0.1.0",
   "description": "Simple React NodeGui testing utilities that encourage good testing practices.",
   "main": "build/index.js",
   "typings": "build/index.d.ts",
