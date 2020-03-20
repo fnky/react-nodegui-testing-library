@@ -14,12 +14,11 @@
   "scripts": {
     "prepublishOnly": "yarn typecheck && yarn lint && yarn build && yarn test",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint --cache src/**/*.{ts,tsx}",
+    "lint": "eslint --cache --ext js,jsx,ts,tsx .",
     "build": "tsc -p tsconfig.build.json",
     "test": "jest",
     "test:update": "yarn test --updateSnapshot --coverage",
-    "docs": "cross-env typedoc && node ./website/docs/scripts/fixdocs.js",
-    "semantic-release": "semantic-release"
+    "docs": "cross-env typedoc && node ./website/docs/scripts/fixdocs.js"
   },
   "husky": {
     "hooks": {
@@ -67,8 +66,7 @@
     "ts-jest": "^25.2.1",
     "typedoc": "^0.17.1",
     "typedoc-plugin-markdown": "^2.2.17",
-    "typescript": "^3.8.3",
-    "semantic-release": "^17.0.4"
+    "typescript": "^3.8.3"
   },
   "peerDependencies": {
     "@nodegui/react-nodegui": ">=0.5.0",
