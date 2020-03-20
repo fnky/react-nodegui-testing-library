@@ -84,6 +84,8 @@ jobs:
 
       - name: Install dependencies
         run: yarn --no-progress --frozen-lockfile
+        env:
+          CI: true
 
       - name: Run tests
         run: yarn test
